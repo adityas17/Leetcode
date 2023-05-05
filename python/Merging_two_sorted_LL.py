@@ -36,6 +36,20 @@ class Solution:
             last.next = list2
 
         return third
+    
+class Solution2:
+    def hasCycle(self, head: Optional[ListNode]) -> bool:
+        p = q = head
+        while True:
+            q = q.next
+            p = p.next
+            if p.next:
+                p = p.next
+            if not p and not q and p==q:
+                break
+        if p==q:
+            return True
+        return False 
 
 head1 = ListNode(1, ListNode(2, ListNode(4)))
 head2 = ListNode(1, ListNode(3, ListNode(4)))        
