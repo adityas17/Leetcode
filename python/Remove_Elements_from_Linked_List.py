@@ -7,35 +7,19 @@ class ListNode:
     
 class Solution:
     def removeElements(self, head: Optional[ListNode], val: int) -> Optional[ListNode]:
-        if head.val == val:
-            head = head.next
-        p = q = head
-        while p:
-            if head.val == val:
-                head = head.next
-                p = q = head
-            if p.val == val:
-                q.next = p.next
-                p.next = None
-                p = q.next
+        dummy = ListNode(next = head)
+        prev,curr = dummy,head
+
+        while curr:
+            nxt = curr.next
+
+            if curr.val == val:
+                prev.next = nxt
             else:
-                q = p
-                p = p.next
-        return head
-    # def removeElements(self, head: Optional[ListNode], val: int) -> Optional[ListNode]:
-    #     dummy = ListNode(next = head)
-    #     prev,curr = dummy,head
+                prev = curr
 
-    #     while curr:
-    #         nxt = curr.next
-
-    #         if curr.val == val:
-    #             prev.next = nxt
-    #         else:
-    #             prev = curr
-
-    #         curr = nxt
-    #     return dummy.next
+            curr = nxt
+        return dummy.next
 
             
 
